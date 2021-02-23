@@ -1,3 +1,7 @@
+#Objetivo
+
+Este repositório tem por objetivo ser colocado o projeto desenvolvido durante o evento Next Level Week ofertado pela RocketSeat
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
