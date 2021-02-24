@@ -1,0 +1,44 @@
+/*Os modules CSS aplicam css a um unico componente sem que afete os outros.*/
+
+.experienceBar{
+    display: flex;
+    align-items: center;
+}
+
+.experienceBar span{ /*CSS aplicado apenas aos <span> dentro do elemento que possui a classe dada*/
+    font-size: 1rem;
+}
+
+.experienceBar > div{ /*Aplica o CSS apenas ao primeiro nível de <div>, ou seja, à <div> mais externa*/
+
+    flex:1; /*Ocupar a largura máxima do container*/
+    height: 4px; /*não está em REM, ou seja, vai sempre ocupar o tamanho fixo*/
+    border-radius: 4px; /*Arredondamento das bordas*/
+    background: var(--gray-line);
+    margin: 0 1.5rem; /*1.5rem de margem nas laterais*/
+    position: relative;
+
+    display: flex;
+    flex-direction: column; /*Os próximos elementos após o experience bar devem vir abaixo dele*/
+
+}
+
+.experienceBar > div > div{ /*Aplica o CSS apenas no segundo nível de <div>*/
+
+    height: 4px;
+    border-radius: 4px;
+    background: var(--green);
+}
+
+span.currentExperience{
+
+    position: absolute;
+    top: 12px;
+    transform: translateX(-50%); /*Hack do CSS que quer centralizar um texto na âncora, ou seja, no ponto de partida. Subtrai 50% do tamanho do texto*/
+}
+
+@media(max-height: 700px) {
+    .experienceBar {
+      margin-bottom: 4rem;
+    }
+  }

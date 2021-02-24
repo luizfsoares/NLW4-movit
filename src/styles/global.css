@@ -1,0 +1,52 @@
+* {  /*o sinal de * significa que todos os elementos vão receber esse estilo de CSS*/
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+:root{ /*Definir as variaveis de cores*/
+    --white: #fff;
+    --background: #F2F3F5;
+    --gray-line: #DCDDE0;
+    --text: #655555;
+    --text-highlight: #B3B9FF;
+    --title: #2E384D;
+    --red: #E83F5B;
+    --green: #4CD62B;
+    --blue: #5965E0;
+    --blue-dark: #4953B8;
+    --blue-twitter: #2AA9E0;
+}
+/*Responsividade em relação aos tamanhos de tela*/
+/*Menor do que 1080px de largura*/
+@media (max-width:1080px){
+    html{
+        font-size:93.75%;
+    }
+}
+@media (max-width:720px){ /*Tamanho abaixo de tablet*/
+    html{
+        font-size:87.5%;
+    }
+}
+
+body{
+    background: var(--background);
+    color: var(--text);
+}
+
+body, input, textarea, button{
+    font: 400 16px "Inter", sans-serif;
+}
+
+button{
+    cursor: pointer; /*altera o cursor ao mover sobre o botao*/
+}
+
+a{
+    color:inherit; /*Vai herdar aos links a cor do container dos links, para manter a mesma cor do texto*/
+    text-decoration: none;
+    
+}
+
+

@@ -1,0 +1,25 @@
+/*CSS destinado apenas para ser inserido na pagina HOME*/
+
+
+.container{
+
+    height: 100vh; /*altura máxima*/
+    max-width: 992px; /*Comprimento máximo do container e consequentemente da barrinha*/
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container section{
+
+    flex:1;
+
+    /*Dar uma olhada em GRID*/
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*Vamos ter duas colunas que vão ocupar o mesmo tamanho*/
+    gap: 6.25rem; /*100 pixels de diferença entre elas no desktop que vão se ajustando conforme o tamanho da tela*/
+    align-content: center;
+}
+

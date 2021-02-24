@@ -1,0 +1,60 @@
+.countdownContainer{
+
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--title);
+    font-family: Rajdhani;
+}
+
+.countdownContainer > div{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background: var(--white);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+    font-size: 8.5rem;
+    text-align: center;
+}
+
+.countdownContainer > div span{
+    flex:1;
+}
+
+.countdownContainer > div span:first-child{ /*Representa o primeiro span dentro da priemira div, ou seja, o que contém o 2. Botando borda na direita*/
+    border-right: 1px solid #f0f1f3;
+}
+
+.countdownContainer > div span:last-child{ /*Representa o último (segundo) span dentro da priemira div, ou seja, o que contém o 5. Botando borda na esquerda*/
+    border-left: 1px solid #f0f1f3;
+}
+
+.countdownContainer > span{
+
+    font-size: 6.25rem;
+    margin: 0 0.5rem;
+}
+
+.startCountdownButton {
+
+    width: 100%; /*ocupar o comprimento todo da div que envelopa*/
+    height: 5rem; /*Altura do botao*/
+    margin-top: 2rem; /*Margem de cima*/
+    display: flex;
+    align-items: center; /*alinhas na vertical no cento*/
+    justify-content: center;
+    border: 0; /*Sem a borda padrão que o css coloca*/
+    border-radius: 5px;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    transition: background-color 0.5s; /*Deixar a mudança de cor mais suave. Demorar 0.5 segundos para completar a transição de cor do background*/
+}
+
+.startCountdownButton:hover{
+    background: var(--blue-dark);
+}
