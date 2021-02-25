@@ -1,9 +1,14 @@
+import { ChallengesContext } from '../contexts/ChallengeContexts';
+import { useContext } from 'react';
 import styles from '../styles/components/ExperienceBar.module.css';
 //Essa forma de importação de CSS importando através do module CSS, a gente importa uma variável JS que contém o css
 //Dessa forma, ao chamar no className, precisa do {}
 
 
 export function ExperienceBar(){
+
+    const {currentExperience, nextLevelExperience} = useContext(ChallengesContext);
+    const percentBar = Math.round((currentExperience/nextLevelExperience) * 100);
 
     return(
 
@@ -14,11 +19,11 @@ export function ExperienceBar(){
 
             <span>0 xp</span>
             <div>
-                <div style={{width: '50%'}}>
-                    <span className={styles.currentExperience}  style={{left: '50%'}}>250px</span>
+                <div style={{width: `${percentBar}%`}}>
+                    <span className={styles.currentExperience}  style={{left: `${percentBar}%`}}>{currentExperience}px</span>
                 </div>
             </div>
-            <span>500 xp</span>
+            <span>{nextLevelExperience} xp</span>
 
         </header>
     );
