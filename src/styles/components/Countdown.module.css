@@ -37,7 +37,7 @@
     margin: 0 0.5rem;
 }
 
-.startCountdownButton {
+.countdownButton {
 
     width: 100%; /*ocupar o comprimento todo da div que envelopa*/
     height: 5rem; /*Altura do botao*/
@@ -55,6 +55,26 @@
     transition: background-color 0.5s; /*Deixar a mudança de cor mais suave. Demorar 0.5 segundos para completar a transição de cor do background*/
 }
 
-.startCountdownButton:hover{
+.endCountdownButton {
+
+    background: var(--white);
+    color: var(--title);
+}
+
+.countdownButton:not(:disabled):hover{ /*Só aplica o efeito de Hover se o botão não estiver desabilitado para clique*/
     background: var(--blue-dark);
+}
+
+.endCountdownButton:not(:disabled):hover {
+
+    background: var(--red);
+    color: var(--white);
+}
+
+.countdownButton:disabled{
+
+    background: var(--white);
+    color: var(--text);
+    cursor: not-allowed;
+    border-bottom: 5px solid var(--green); /*A MAIS*/
 }
