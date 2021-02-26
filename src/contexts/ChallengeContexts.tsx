@@ -1,4 +1,5 @@
-import { createContext, useState, ReactNode } from 'react';
+import next from 'next';
+import { createContext, useState, ReactNode, useEffect} from 'react';
 import challenges from '../../challenges.json';
 
 interface Challenge{
@@ -16,6 +17,7 @@ interface ChallengesContextData {
     currentChallenge: Challenge; 
     resetChallenge: () => void;
     nextLevelExperience: number;
+    completeChallenge: ()=> void;
   }
 
 
@@ -35,6 +37,13 @@ export function ChallengesProvider({ children }: ChallengesProviderProps){
     const [currentNumberChallenges, setCurrentNumberChallenges] = useState(0);
     const [currentChallenge, setCurrentChallenge] = useState(null);
 
+
+    //Pedir permissões para mostrar notificiação;
+    //Quando o segundo argumento é um [] vazio, vai executar uma unica vez quando o componente aparecer pela primeira vez na tela
+    useEffect(() => {
+        Notification.requestPermission();
+    }, [])
+
     function levelUp(){
 
         setLevel(level + 1);
@@ -46,6 +55,15 @@ export function ChallengesProvider({ children }: ChallengesProviderProps){
         
         const challenge = challenges[challengeNumber];
         setCurrentChallenge(challenge);
+
+        //Notificação em Audio de Desafio Novo
+        new Audio('/notification.mp3').play();
+
+        //Notificação de Desafio NOvo
+        new Notification('Novo Desafio 🚀🚀', {
+            
+        })
+        
     }
 
     function resetChallenge(){
@@ -56,10 +74,35 @@ export function ChallengesProvider({ children }: ChallengesProviderProps){
     //Calculo usado por games de RPG para calcular a experiência do proximo nível
     const nextLevelExperience = Math.pow((level + 1)*4, 2);
 
+    //Função de Completar
+    function completeChallenge(){
+
+        if (!currentChallenge){
+            return;
+        }
+
+        const { amount } = currentChallenge;
+        let sumExperience = amount + currentExperience
+        if(sumExperience >= nextLevelExperience){
+            levelUp();
+            const differenceExperience = sumExperience - nextLevelExperience;
+            setCurrentExperience(differenceExperience);
+            setCurrentChallenge(null);
+            setCurrentNumberChallenges(currentNumberChallenges + 1);
+
+        }
+        else{
+            setCurrentExperience(sumExperience);
+            setCurrentChallenge(null);
+            setCurrentNumberChallenges(currentNumberChallenges + 1);
+        }
+    }
+
     return(
 
         <ChallengesContext.Provider value={{level, levelUp, currentExperience, currentNumberChallenges, 
-                                            startNewChallenge, currentChallenge, resetChallenge, nextLevelExperience}}>
+                                            startNewChallenge, currentChallenge, resetChallenge, nextLevelExperience,
+                                            completeChallenge}}>
 
             {children}
         </ChallengesContext.Provider>
