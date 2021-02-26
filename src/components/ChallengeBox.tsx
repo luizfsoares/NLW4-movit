@@ -2,13 +2,16 @@
 import styles from '../styles/components/ChallengeBox.module.css';
 import { useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengeContexts';
+import { CountdownContexts } from '../contexts/CountdownContexts';
 
 
 export function ChallengeBox() {
 
     //Recebendo dados do contexto de Challenges
     //A partir dessa variável, como ela é um objeto, podemos ter acesso aqui a cada parâmetro, tipo, texto e quantidade.
-    const { currentChallenge, resetChallenge } = useContext(ChallengesContext);
+    const { currentChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext);
+    const {challengeFailed, challengeSucceeded} = useContext(CountdownContexts);
+
 
 
     return(
@@ -26,8 +29,8 @@ export function ChallengeBox() {
                         <p>{currentChallenge.description}</p>
                     </main>
                     <footer>
-                        <button type="button" className={styles.loserButton} onClick={resetChallenge/*muda pra null e alterao resultado do loop */}>Falhei</button>
-                        <button type="button" className={styles.winnerButton} >Completei</button>
+                        <button type="button" className={styles.loserButton} onClick={challengeFailed/*muda pra null e alterao resultado do loop */}>Falhei</button>
+                        <button type="button" className={styles.winnerButton} onClick={challengeSucceeded}>Completei</button>
                     </footer>
 
                 </div>
